@@ -15,6 +15,7 @@
 		F27393DE2808B5CF008445AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F27393DC2808B5CF008445AC /* LaunchScreen.storyboard */; };
 		F27393E62808B611008445AC /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27393E52808B611008445AC /* Question.swift */; };
 		F27393E82808B690008445AC /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27393E72808B690008445AC /* QuizModel.swift */; };
+		F27393EE2808BCDD008445AC /* QuestionData.json in Resources */ = {isa = PBXBuildFile; fileRef = F27393ED2808BCDD008445AC /* QuestionData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F27393DF2808B5CF008445AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F27393E52808B611008445AC /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		F27393E72808B690008445AC /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
+		F27393ED2808BCDD008445AC /* QuestionData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QuestionData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				F27393D52808B5CC008445AC /* ViewController.swift */,
 				F27393E52808B611008445AC /* Question.swift */,
 				F27393E72808B690008445AC /* QuizModel.swift */,
+				F27393ED2808BCDD008445AC /* QuestionData.json */,
 				F27393D72808B5CC008445AC /* Main.storyboard */,
 				F27393DA2808B5CF008445AC /* Assets.xcassets */,
 				F27393DC2808B5CF008445AC /* LaunchScreen.storyboard */,
@@ -134,6 +137,7 @@
 				F27393DE2808B5CF008445AC /* LaunchScreen.storyboard in Resources */,
 				F27393DB2808B5CF008445AC /* Assets.xcassets in Resources */,
 				F27393D92808B5CC008445AC /* Main.storyboard in Resources */,
+				F27393EE2808BCDD008445AC /* QuestionData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
