@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  QuizApp
 //
-//  Created by mcmaster on 4/14/22.
+//  Created by Meredith Anderer on 4/14/22.
 //
 
 import UIKit
