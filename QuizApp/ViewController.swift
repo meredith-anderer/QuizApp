@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITableViewDataSource, ResultViewControllerProtocol {
 
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var questionLabel: UILabel!
@@ -18,11 +18,23 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
     var currentQuestionIndex = 0
     var numCorrect = 0
     
+    var resultDialog: ResultViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Initialize the result dialog
+        resultDialog = storyboard?.instantiateViewController(withIdentifier: "ResultVC") as? ResultViewController
+        resultDialog?.modalPresentationStyle = .overCurrentContext
+        resultDialog?.delegate = self
+        
         // Set self as the delegate and datasource for the tableview
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // Dynamic row heights
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableView.automaticDimension
         
         // Set up the model
         model.delegate = self
@@ -64,24 +76,34 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Check if there are questions/ that the currentQUestionIndex is not out of bounds
         guard currentQuestionIndex < questions.count && questions.count > 0 else { return }
-        // Display the feedback
         let currentQuestion = questions[currentQuestionIndex]
+        
         // Check if the correct answer was selected and handle accordingly
         if indexPath.row == currentQuestion.correctAnswerIndex {
-            
+            resultDialog?.titleText = "Correct!"
+            numCorrect += 1
         } else {
-            
+            resultDialog?.titleText = "Wrong!"
         }
-        // Update the currentQuestionIndex by either incrementing it or resetting it to 0 if the question currently displayed was the last one
+        
+        // Set the feedback text
+        resultDialog?.feedbackText = currentQuestion.feedback ?? ""
+
+        // Make different updates depending on if the question displayed was the last one or not
         if currentQuestionIndex >= questions.count - 1 {
             // This was the last question, go back to the beginning
             currentQuestionIndex = 0
+            resultDialog?.feedbackText += "\n\nYou got \(numCorrect) correct out of \(questions.count) questions."
+            resultDialog?.buttonText = "Start Over"
         } else {
             //Increment the currentQuestionINdex to display the next question
             currentQuestionIndex += 1
+            resultDialog?.buttonText = "Next"
         }
-        // Display the next question, or go back to beginning if this was the last one.
-        displayQuestion()
+        //Display the result dialog
+        if let resultDialog = resultDialog {
+            present(resultDialog, animated: true, completion: nil)
+        }
     }
     
     //MARK: - QuizProtocol Methods
@@ -94,6 +116,12 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
         
         //Reload the tableview
         tableView.reloadData()
+    }
+    
+    //MARK: - ResultViewControllerProtocol Methods
+    func dialogDismissed() {
+        // Display the next question, or go back to beginning if this was the last one.
+        displayQuestion()
     }
 
 }

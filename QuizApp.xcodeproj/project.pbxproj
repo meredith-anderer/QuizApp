@@ -16,6 +16,7 @@
 		F27393E62808B611008445AC /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27393E52808B611008445AC /* Question.swift */; };
 		F27393E82808B690008445AC /* QuizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27393E72808B690008445AC /* QuizModel.swift */; };
 		F27393EE2808BCDD008445AC /* QuestionData.json in Resources */ = {isa = PBXBuildFile; fileRef = F27393ED2808BCDD008445AC /* QuestionData.json */; };
+		F27393F22808CD69008445AC /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27393F12808CD69008445AC /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F27393E52808B611008445AC /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		F27393E72808B690008445AC /* QuizModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizModel.swift; sourceTree = "<group>"; };
 		F27393ED2808BCDD008445AC /* QuestionData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QuestionData.json; sourceTree = "<group>"; };
+		F27393F12808CD69008445AC /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				F27393D52808B5CC008445AC /* ViewController.swift */,
 				F27393E52808B611008445AC /* Question.swift */,
 				F27393E72808B690008445AC /* QuizModel.swift */,
+				F27393F12808CD69008445AC /* ResultViewController.swift */,
 				F27393ED2808BCDD008445AC /* QuestionData.json */,
 				F27393D72808B5CC008445AC /* Main.storyboard */,
 				F27393DA2808B5CF008445AC /* Assets.xcassets */,
@@ -153,6 +156,7 @@
 				F27393D22808B5CC008445AC /* AppDelegate.swift in Sources */,
 				F27393D42808B5CC008445AC /* SceneDelegate.swift in Sources */,
 				F27393E82808B690008445AC /* QuizModel.swift in Sources */,
+				F27393F22808CD69008445AC /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
