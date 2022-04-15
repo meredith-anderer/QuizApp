@@ -35,21 +35,59 @@ class ResultViewController: UIViewController {
         titleLabel.text = titleText
         feedbackLabel.text = feedbackText
         dismissButton.setTitle(buttonText, for: .normal)
+        
+        // Hide UI Elements to start
+        dimView.alpha = 0
+        titleLabel.alpha = 0
+        feedbackLabel.alpha = 0
+        dismissButton.alpha = 0
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // Fade in the dim view
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            options: .curveEaseOut,
+            animations:
+                {
+                    self.dimView.alpha = 1
+                    self.titleLabel.alpha = 1
+                    self.feedbackLabel.alpha = 1
+                },
+            completion:
+                { _ in
+                    UIView.animate(
+                        withDuration: 0.5,
+                        delay: 0,
+                        options: .curveEaseOut,
+                        animations:
+                            {
+                                self.dismissButton.alpha = 1
+
+                            },
+                        completion: nil)
+                }
+        )
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func dismissTapped(_ sender: Any) {
-        // TODO: dismiss the popup
-        dismiss(animated: true, completion: nil)
-        delegate?.dialogDismissed()
+        // Fade out the dim view before the popup is dismissed
+        UIView.animate(withDuration: 0.3,
+                       delay: 0,
+                       options: .curveEaseOut,
+                       animations:
+                        {
+                            self.dimView.alpha = 0
+                        },
+                       completion:
+                        { _ in
+                            // dismiss the popup
+                            self.dismiss(animated: true, completion: nil)
+                            // notify the delegate that it was dismissed
+                            self.delegate?.dialogDismissed()
+                        }
+        )
     }
     
 }

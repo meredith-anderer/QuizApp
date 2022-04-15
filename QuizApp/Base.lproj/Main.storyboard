@@ -28,9 +28,12 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tUA-9f-YgK">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tUA-9f-YgK">
                                         <rect key="frame" x="0.0" y="448" width="414" height="448"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AnswerCell" id="42I-x9-dVE">
                                                 <rect key="frame" x="0.0" y="44.5" width="414" height="60.5"/>
@@ -58,6 +61,7 @@
                                                             </constraints>
                                                         </view>
                                                     </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="C1F-rq-Isj" secondAttribute="bottom" constant="20" id="2m0-02-qcK"/>
                                                         <constraint firstItem="C1F-rq-Isj" firstAttribute="leading" secondItem="qAB-AJ-qwt" secondAttribute="leading" constant="20" id="HHB-eG-8eg"/>
@@ -70,6 +74,7 @@
                                         </prototypes>
                                     </tableView>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="TYN-xW-ZcA" firstAttribute="width" secondItem="XCk-f5-5rw" secondAttribute="width" constant="-40" id="8f7-Al-WLm"/>
                                     <constraint firstItem="tUA-9f-YgK" firstAttribute="width" secondItem="XCk-f5-5rw" secondAttribute="width" id="OX4-V0-fdS"/>
@@ -92,6 +97,8 @@
                     <connections>
                         <outlet property="questionLabel" destination="TYN-xW-ZcA" id="e5S-oz-c1h"/>
                         <outlet property="stackView" destination="XCk-f5-5rw" id="Nl5-JJ-t0z"/>
+                        <outlet property="stackViewLeadingConstraint" destination="WqB-aE-gvS" id="KjF-GQ-4eQ"/>
+                        <outlet property="stackViewTrailingConstraint" destination="z6r-UW-mC4" id="4ma-Dy-BLT"/>
                         <outlet property="tableView" destination="tUA-9f-YgK" id="WqN-Ra-pLL"/>
                     </connections>
                 </viewController>
@@ -109,7 +116,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pgu-DX-eOl" userLabel="DimView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.30121304341499378" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oCN-mW-ioX" userLabel="DialogView">
                                 <rect key="frame" x="40" y="144" width="334" height="618"/>
@@ -123,7 +130,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAg-nF-90H">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAg-nF-90H">
                                                 <rect key="frame" x="0.0" y="172.5" width="234" height="173"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>

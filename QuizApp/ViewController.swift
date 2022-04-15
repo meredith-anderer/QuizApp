@@ -13,6 +13,9 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var stackViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var stackViewTrailingConstraint: NSLayoutConstraint!
+    
     var model = QuizModel()
     var questions = [Question]()
     var currentQuestionIndex = 0
@@ -41,7 +44,40 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
         model.getQuestions()
     }
     
-    //MARK: - Logic Methods
+    //MARK: - Display Methods
+    func slideInQuestion() {
+        // Set the initial state
+        stackViewLeadingConstraint.constant = 1000
+        stackViewTrailingConstraint.constant = -1000
+        stackView.alpha = 0
+        view.layoutIfNeeded()
+        
+        // Animate it to the end state
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            self.stackViewLeadingConstraint.constant = 0
+            self.stackViewTrailingConstraint.constant = 0
+            self.stackView.alpha = 1
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    func slideOutQuestion() {
+        // Set the initial state
+        stackViewLeadingConstraint.constant = 0
+        stackViewTrailingConstraint.constant = 0
+        stackView.alpha = 1
+        view.layoutIfNeeded()
+        
+        // Animate it to the end state
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            self.stackViewLeadingConstraint.constant = -1000
+            self.stackViewTrailingConstraint.constant = 1000
+            self.stackView.alpha = 0
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+    }
+    
     func displayQuestion() {
         // Check if there are questions/ that the currentQUestionIndex is not out of bounds
         guard currentQuestionIndex < questions.count && questions.count > 0 else { return }
@@ -51,6 +87,9 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
         
         // Reload the tableview with the answers for this question
         tableView.reloadData()
+        
+        // Slide in the question
+        slideInQuestion()
     }
     
     //MARK: - UITableView Protocol Methods
@@ -105,6 +144,11 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
         
         // Save the state
         StateManager.saveState(questionIndex: self.currentQuestionIndex, numCorrect: self.numCorrect)
+        
+        // animate question out
+        DispatchQueue.main.async {
+            self.slideOutQuestion()
+        }
         //Display the result dialog
         if let resultDialog = resultDialog {
             // Ensure that we are doing layout work on main thread
