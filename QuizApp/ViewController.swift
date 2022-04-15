@@ -20,6 +20,8 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
     
     var resultDialog: ResultViewController?
     
+    var jsonURL = "https://codewithchris.com/code/QuestionData.json"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -93,13 +95,18 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
         if currentQuestionIndex >= questions.count - 1 {
             // This was the last question, go back to the beginning
             currentQuestionIndex = 0
-            resultDialog?.feedbackText += "\n\nYou got \(numCorrect) correct out of \(questions.count) questions."
+            resultDialog?.feedbackText += "\n\n End of Quiz Summary:\n\nYou got \(numCorrect) correct out of \(questions.count) questions."
             resultDialog?.buttonText = "Start Over"
+            //clear the state
+            StateManager.clearState()
         } else {
             //Increment the currentQuestionINdex to display the next question
             currentQuestionIndex += 1
             resultDialog?.buttonText = "Next"
         }
+        
+        // Save the state
+        StateManager.saveState(questionIndex: self.currentQuestionIndex, numCorrect: self.numCorrect)
         //Display the result dialog
         if let resultDialog = resultDialog {
             present(resultDialog, animated: true, completion: nil)
@@ -111,6 +118,12 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
         // Get a reference to the questsions
         self.questions = questions
         
+        // Check if we should restore the sate before showing question #1
+        if let questionIndex = StateManager.retrieveValue(key: StateManager.questionIndexKey) as? Int, let numCorrect = StateManager.retrieveValue(key: StateManager.numCorrectKey) as? Int, questionIndex < self.questions.count {
+            self.currentQuestionIndex = questionIndex
+            self.numCorrect = numCorrect
+        }
+
         //Display the first question
         displayQuestion()
         

@@ -27,6 +27,7 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dialogView.layer.cornerRadius = 10.0
     }
     
     override func viewWillAppear(_ animated: Bool) {
