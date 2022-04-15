@@ -19,9 +19,7 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
     var numCorrect = 0
     
     var resultDialog: ResultViewController?
-    
-    var jsonURL = "https://codewithchris.com/code/QuestionData.json"
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -95,7 +93,7 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
         if currentQuestionIndex >= questions.count - 1 {
             // This was the last question, go back to the beginning
             currentQuestionIndex = 0
-            resultDialog?.feedbackText += "\n\n End of Quiz Summary:\n\nYou got \(numCorrect) correct out of \(questions.count) questions."
+            resultDialog?.feedbackText += "\n\nYou got \(numCorrect) correct out of \(questions.count) questions."
             resultDialog?.buttonText = "Start Over"
             //clear the state
             StateManager.clearState()
@@ -109,7 +107,10 @@ class ViewController: UIViewController, QuizProtocol, UITableViewDelegate, UITab
         StateManager.saveState(questionIndex: self.currentQuestionIndex, numCorrect: self.numCorrect)
         //Display the result dialog
         if let resultDialog = resultDialog {
-            present(resultDialog, animated: true, completion: nil)
+            // Ensure that we are doing layout work on main thread
+            DispatchQueue.main.async {
+                self.present(resultDialog, animated: true, completion: nil)
+            }
         }
     }
     

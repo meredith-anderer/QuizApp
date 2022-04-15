@@ -22,7 +22,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XCk-f5-5rw">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYN-xW-ZcA">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYN-xW-ZcA">
                                         <rect key="frame" x="20" y="0.0" width="374" height="448"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="23"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -42,8 +42,8 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1F-rq-Isj">
                                                             <rect key="frame" x="20" y="0.0" width="374" height="40.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Phz-EA-ybB">
-                                                                    <rect key="frame" x="0.0" y="10" width="374" height="20.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Phz-EA-ybB">
+                                                                    <rect key="frame" x="20" y="10" width="334" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -51,10 +51,10 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="0.29982873777680047" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="Phz-EA-ybB" secondAttribute="trailing" constant="20" id="9c9-9c-lZi"/>
                                                                 <constraint firstAttribute="bottom" secondItem="Phz-EA-ybB" secondAttribute="bottom" constant="10" id="JOe-bI-WoX"/>
+                                                                <constraint firstItem="Phz-EA-ybB" firstAttribute="leading" secondItem="C1F-rq-Isj" secondAttribute="leading" constant="20" id="QqN-B3-h2n"/>
                                                                 <constraint firstItem="Phz-EA-ybB" firstAttribute="top" secondItem="C1F-rq-Isj" secondAttribute="top" constant="10" id="ZwY-2P-Ohq"/>
-                                                                <constraint firstAttribute="trailing" secondItem="Phz-EA-ybB" secondAttribute="trailing" id="dWV-cB-nsS"/>
-                                                                <constraint firstItem="Phz-EA-ybB" firstAttribute="leading" secondItem="C1F-rq-Isj" secondAttribute="leading" id="pEL-lg-KVe"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>

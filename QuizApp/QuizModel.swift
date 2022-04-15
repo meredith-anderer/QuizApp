@@ -17,7 +17,8 @@ class QuizModel {
     
     func getQuestions() {
         // TODO-  Fetch the questions
-        getQuestionsFromLocalJSONFile()
+        //getQuestionsFromLocalJSONFile()
+        getQuestionsFromRemoteJSONFile()
     }
     
     func getQuestionsFromLocalJSONFile() {
@@ -41,6 +42,29 @@ class QuizModel {
     }
     
     func getQuestionsFromRemoteJSONFile() {
-        // TO DO
+        let urlString = "https://codewithchris.com/code/QuestionData.json"
+        
+        // Get a URL object
+        guard let url = URL(string: urlString) else { return }
+        
+        // Get a URL Session object
+        let session = URLSession.shared
+
+        // Get a data task object
+        let datatask = session.dataTask(with: url) {data, response, error in
+            if let data = data, error == nil {
+                let decoder = JSONDecoder()
+                
+                if let questions = try? decoder.decode([Question].self, from: data) {
+                    // Use the main thread to notify the view controller for UI Work
+                    DispatchQueue.main.async {
+                        // Notify the delegate
+                        self.delegate?.questionsRetrieved(questions)
+                    }
+                }
+            }
+        }
+        // Call resume on the data task
+        datatask.resume()
     }
 }
